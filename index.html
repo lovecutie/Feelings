@@ -264,11 +264,14 @@ button:hover {
 
     transition:
         transform 0.35s ease,
-        box-shadow 0.35s ease;
+        box-shadow 0.35s ease,
+        opacity 0.35s ease;
 }
 
 
-.lilac-box:hover {
+/* Hover */
+
+.lilac-box:not(.disabled):not(.open):hover {
 
     transform:
         translateY(-4px)
@@ -279,6 +282,20 @@ button:hover {
         rgba(119,82,151,0.30);
 }
 
+
+/* Locked boxes */
+
+.lilac-box.disabled {
+
+    opacity: 0.45;
+
+    cursor: not-allowed;
+
+    filter: grayscale(10%);
+}
+
+
+/* Open box */
 
 .lilac-box.open {
 
@@ -327,6 +344,8 @@ button:hover {
 }
 
 
+/* Pulse */
+
 .box-closed {
 
     animation:
@@ -350,6 +369,8 @@ button:hover {
 }
 
 
+/* Content hidden */
+
 .box-content {
 
     display: none;
@@ -357,6 +378,8 @@ button:hover {
     line-height: 1.7;
 }
 
+
+/* Content visible */
 
 .lilac-box.open .box-content {
 
@@ -753,6 +776,8 @@ button:hover {
     background: #999;
 
     margin-left: 10px;
+
+    position: relative;
 }
 
 
@@ -913,7 +938,7 @@ button:hover {
 
         <!-- BOX 2 -->
 
-        <div class="lilac-box"
+        <div class="lilac-box disabled"
              id="box2"
              onclick="openBox(2)">
 
@@ -937,7 +962,7 @@ button:hover {
 
         <!-- BOX 3 -->
 
-        <div class="lilac-box"
+        <div class="lilac-box disabled"
              id="box3"
              onclick="openBox(3)">
 
@@ -958,6 +983,8 @@ button:hover {
 
         </div>
 
+
+        <!-- CONTINUE -->
 
         <button id="continuePage1"
                 style="display:none;"
@@ -1093,9 +1120,7 @@ button:hover {
 
 
 
-    <!-- =====================================
-         BIG NOTE
-    ====================================== -->
+    <!-- BIG NOTE -->
 
     <div id="noteBox">
 
@@ -1119,6 +1144,8 @@ button:hover {
 
     </div>
 
+
+    <!-- PAGE 3 BUTTON -->
 
     <button id="page3Btn"
             onclick="goToPage3()">
@@ -1156,9 +1183,7 @@ button:hover {
 
 
         <p>
-
             I don't really know when it happened...
-
         </p>
 
 
@@ -1208,16 +1233,9 @@ button:hover {
 
 
 
-    <!-- =====================================
-         PROPOSAL
-    ====================================== -->
+    <!-- PROPOSAL -->
 
     <div class="proposal">
-
-
-        <h2>
-            Okay... here's the question ❤️
-        </h2>
 
 
         <p>
@@ -1263,13 +1281,27 @@ button:hover {
 
 
 /* =========================================
-   PAGE 1 BOXES
+   PAGE 1
+   OPEN BOXES IN ORDER
 ========================================= */
 
 let openedBoxes = 0;
 
 
 function openBox(number) {
+
+
+    /*
+       Only allow the next box.
+
+       Box 1 → Box 2 → Box 3
+    */
+
+    if (number !== openedBoxes + 1) {
+
+        return;
+
+    }
 
 
     const box =
@@ -1280,31 +1312,41 @@ function openBox(number) {
         document.getElementById("closed" + number);
 
 
-    /* Don't reopen */
-
-    if (box.classList.contains("open")) {
-
-        return;
-
-    }
-
-
-    /* Open */
+    /* Open current box */
 
     box.classList.add("open");
 
 
-    /* Hide closed text */
+    /* Hide "Tap to open" */
 
     closed.style.display = "none";
 
 
-    /* Count */
+    /* Count opened boxes */
 
     openedBoxes++;
 
 
-    /* All boxes opened */
+    /*
+       Unlock next box
+    */
+
+    if (openedBoxes < 3) {
+
+        const nextBox =
+            document.getElementById(
+                "box" + (openedBoxes + 1)
+            );
+
+
+        nextBox.classList.remove("disabled");
+
+    }
+
+
+    /*
+       Show Continue after all 3
+    */
 
     if (openedBoxes === 3) {
 
@@ -1314,7 +1356,7 @@ function openBox(number) {
                 "continuePage1"
             ).style.display = "inline-block";
 
-        }, 500);
+        }, 600);
 
     }
 
@@ -1323,7 +1365,7 @@ function openBox(number) {
 
 
 /* =========================================
-   PAGE 2
+   GO TO PAGE 2
 ========================================= */
 
 function goToPage2() {
@@ -1350,10 +1392,12 @@ function goToPage2() {
 
 
 /* =========================================
+   PAGE 2
    FLIP CARDS
 ========================================= */
 
 let flippedCards = 0;
+
 
 let cardStatus = {
 
@@ -1369,29 +1413,33 @@ let cardStatus = {
 function flipCard(card, number) {
 
 
-    /* Flip card */
+    /*
+       Don't flip the card back once opened.
+    */
 
-    card.classList.toggle("flipped");
+    if (cardStatus[number] === true) {
 
-
-    /* Count only first opening */
-
-    if (
-        card.classList.contains("flipped")
-        &&
-        cardStatus[number] === false
-    ) {
-
-        cardStatus[number] = true;
-
-        flippedCards++;
+        return;
 
     }
 
 
-    /* =====================================
-       ALL THREE OPEN
-    ===================================== */
+    /* Flip card */
+
+    card.classList.add("flipped");
+
+
+    /* Mark as opened */
+
+    cardStatus[number] = true;
+
+
+    flippedCards++;
+
+
+    /*
+       Show note after all 3 cards
+    */
 
     if (flippedCards === 3) {
 
@@ -1418,7 +1466,7 @@ function flipCard(card, number) {
 
 
 /* =========================================
-   PAGE 3
+   GO TO PAGE 3
 ========================================= */
 
 function goToPage3() {
@@ -1445,7 +1493,7 @@ function goToPage3() {
 
 
 /* =========================================
-   YES
+   YES BUTTON
 ========================================= */
 
 function sayYes() {
@@ -1466,7 +1514,7 @@ function sayYes() {
 
 
 /* =========================================
-   NO
+   NO BUTTON
 ========================================= */
 
 function moveNoButton(button) {
