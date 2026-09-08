@@ -2,619 +2,838 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>A Little Question For You ❤️</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
+<title>A Little Question For You ❤️</title>
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<style>
 
+/* =========================================
+   BASIC
+========================================= */
 
-        body {
-            font-family: "Poppins", Arial, sans-serif;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-            min-height: 100vh;
+body {
 
-            background:
-                radial-gradient(circle at top left, #eee1ff, transparent 35%),
-                radial-gradient(circle at bottom right, #e7d4ff, transparent 35%),
-                linear-gradient(135deg, #f9f1ff, #eee3ff, #fceeff);
+    font-family: "Poppins", Arial, sans-serif;
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
+    min-height: 100vh;
 
-            overflow-x: hidden;
+    background:
+        radial-gradient(circle at top left, #eee1ff, transparent 35%),
+        radial-gradient(circle at bottom right, #e7d4ff, transparent 35%),
+        linear-gradient(135deg, #f9f1ff, #eee3ff, #fceeff);
 
-            color: #4a305f;
-        }
+    display: flex;
 
+    justify-content: center;
 
-        /* =========================================
-           FLOATING HEARTS
-        ========================================= */
+    align-items: center;
 
-        .heart {
-            position: fixed;
+    overflow-x: hidden;
 
-            bottom: -30px;
+    color: #4a305f;
+}
 
-            font-size: 22px;
 
-            animation: floatUp linear infinite;
+/* =========================================
+   FLOATING HEARTS
+========================================= */
 
-            opacity: 0.7;
+.heart {
 
-            pointer-events: none;
+    position: fixed;
 
-            z-index: 0;
-        }
+    bottom: -30px;
 
+    font-size: 22px;
 
-        @keyframes floatUp {
+    animation: floatUp linear infinite;
 
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 0;
-            }
+    opacity: 0.7;
 
-            20% {
-                opacity: 0.8;
-            }
+    pointer-events: none;
 
-            100% {
-                transform: translateY(-110vh) rotate(360deg);
-                opacity: 0;
-            }
+    z-index: 0;
+}
 
-        }
+@keyframes floatUp {
 
+    0% {
 
-        /* =========================================
-           MAIN CONTAINER
-        ========================================= */
+        transform:
+            translateY(0)
+            rotate(0deg);
 
-        .container {
-            width: 92%;
+        opacity: 0;
+    }
 
-            max-width: 700px;
+    20% {
+        opacity: 0.8;
+    }
 
-            text-align: center;
+    100% {
 
-            position: relative;
+        transform:
+            translateY(-110vh)
+            rotate(360deg);
 
-            z-index: 2;
+        opacity: 0;
+    }
+}
 
-            padding: 30px 0;
-        }
 
+/* =========================================
+   CONTAINER
+========================================= */
 
-        /* =========================================
-           PAGES
-        ========================================= */
+.container {
 
-        .page {
-            display: none;
+    width: 92%;
 
-            animation: fadeIn 0.8s ease;
-        }
+    max-width: 720px;
 
+    text-align: center;
 
-        .page.active {
-            display: block;
-        }
+    position: relative;
 
+    z-index: 2;
 
-        @keyframes fadeIn {
+    padding: 35px 0;
+}
 
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+/* =========================================
+   PAGES
+========================================= */
 
-        }
+.page {
 
+    display: none;
 
-        /* =========================================
-           HEADINGS
-        ========================================= */
+    animation:
+        pageAppear 0.8s ease;
+}
 
-        h1 {
-            font-size: 2rem;
+.page.active {
 
-            margin-bottom: 30px;
+    display: block;
+}
 
-            color: #8b5bb3;
+@keyframes pageAppear {
 
-            text-shadow:
-                0 3px 15px rgba(139, 91, 179, 0.15);
-        }
+    from {
 
+        opacity: 0;
 
-        /* =========================================
-           START BUTTON
-        ========================================= */
+        transform:
+            translateY(25px);
+    }
 
-        #startBtn {
+    to {
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #a978d1,
-                    #8e61b5
-                );
+        opacity: 1;
 
-            box-shadow:
-                0 8px 25px rgba(126, 81, 165, 0.3);
+        transform:
+            translateY(0);
+    }
+}
 
-            animation: buttonPulse 2s infinite;
-        }
 
+/* =========================================
+   HEADINGS
+========================================= */
 
-        @keyframes buttonPulse {
+h1 {
 
-            0% {
-                transform: scale(1);
-            }
+    font-size: 2rem;
 
-            50% {
-                transform: scale(1.05);
-            }
+    margin-bottom: 30px;
 
-            100% {
-                transform: scale(1);
-            }
+    color: #8b5bb3;
 
-        }
+    text-shadow:
+        0 3px 15px
+        rgba(139, 91, 179, 0.15);
+}
 
 
-        /* =========================================
-           STORY AREA
-        ========================================= */
+/* =========================================
+   BUTTONS
+========================================= */
 
-        #story {
-            display: none;
+button {
 
-            margin-top: 25px;
-        }
+    border: none;
 
+    padding: 14px 28px;
 
-        /* =========================================
-           BEAUTIFUL LILAC BOXES
-        ========================================= */
+    border-radius: 30px;
 
-        .lilac-box {
+    background:
+        linear-gradient(
+            135deg,
+            #a978d1,
+            #8e61b5
+        );
 
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(238, 225, 255, 0.96),
-                    rgba(210, 188, 240, 0.96)
-                );
+    color: white;
 
-            border: 1px solid rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
 
-            border-radius: 24px;
+    cursor: pointer;
 
-            padding: 24px 25px;
+    margin-top: 25px;
 
-            margin: 20px 0;
+    box-shadow:
+        0 7px 20px
+        rgba(126, 81, 165, 0.3);
 
-            color: #604276;
+    transition:
+        0.3s ease;
+}
 
-            font-size: 1.08rem;
+button:hover {
 
-            line-height: 1.7;
+    transform:
+        translateY(-3px)
+        scale(1.04);
 
-            box-shadow:
-                0 12px 30px rgba(119, 82, 151, 0.18),
-                inset 0 1px 3px rgba(255, 255, 255, 0.9);
+    box-shadow:
+        0 10px 25px
+        rgba(126, 81, 165, 0.4);
+}
 
-            opacity: 0;
 
-            transform:
-                translateY(30px)
-                scale(0.92);
+/* =========================================
+   PAGE 1
+   CLICKABLE LILAC BOXES
+========================================= */
 
-            transition:
-                opacity 0.8s ease,
-                transform 0.8s ease;
-        }
+.story {
 
+    margin-top: 20px;
+}
 
-        .lilac-box.show {
 
-            opacity: 1;
+.lilac-box {
 
-            transform:
-                translateY(0)
-                scale(1);
+    position: relative;
 
-            animation:
-                lilacGlow 2s ease-in-out;
-        }
+    background:
+        linear-gradient(
+            135deg,
+            #d9c1f2,
+            #b995d9
+        );
 
+    border:
+        2px solid
+        rgba(255,255,255,0.7);
 
-        @keyframes lilacGlow {
+    border-radius: 24px;
 
-            0% {
-                box-shadow:
-                    0 0 0 rgba(170, 130, 220, 0);
-            }
+    padding: 25px;
 
-            50% {
-                box-shadow:
-                    0 0 30px rgba(170, 130, 220, 0.45);
-            }
+    margin: 18px 0;
 
-            100% {
-                box-shadow:
-                    0 12px 30px rgba(119, 82, 151, 0.18);
-            }
+    min-height: 90px;
 
-        }
+    display: flex;
 
+    align-items: center;
 
-        /* =========================================
-           TYPING CURSOR
-        ========================================= */
+    justify-content: center;
 
-        .typing-cursor {
+    color: white;
 
-            display: inline-block;
+    font-size: 1.05rem;
 
-            width: 2px;
+    cursor: pointer;
 
-            height: 20px;
+    box-shadow:
+        0 10px 28px
+        rgba(119,82,151,0.20);
 
-            background: #8e61b5;
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
 
-            animation: blink 0.7s infinite;
 
-            vertical-align: middle;
+.lilac-box:hover {
 
-            margin-left: 3px;
-        }
+    transform:
+        translateY(-4px)
+        scale(1.02);
 
+    box-shadow:
+        0 15px 35px
+        rgba(119,82,151,0.30);
+}
 
-        @keyframes blink {
 
-            50% {
-                opacity: 0;
-            }
+.lilac-box.open {
 
-        }
+    cursor: default;
 
+    background:
+        linear-gradient(
+            135deg,
+            #eee2ff,
+            #d4bbed
+        );
 
-        /* =========================================
-           BUTTONS
-        ========================================= */
+    color: #604276;
 
-        button {
+    box-shadow:
+        0 12px 32px
+        rgba(119,82,151,0.22);
 
-            border: none;
+    animation:
+        openBoxAnimation 0.7s ease;
+}
 
-            padding: 14px 28px;
 
-            border-radius: 30px;
+@keyframes openBoxAnimation {
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #a978d1,
-                    #8e61b5
-                );
+    0% {
 
-            color: white;
+        transform:
+            scale(0.9)
+            rotateX(10deg);
 
-            font-size: 1rem;
+        opacity: 0.5;
+    }
 
-            cursor: pointer;
+    60% {
 
-            margin-top: 25px;
+        transform:
+            scale(1.04);
+    }
 
-            box-shadow:
-                0 7px 20px rgba(126, 81, 165, 0.3);
+    100% {
 
-            transition:
-                0.3s ease;
-        }
+        transform:
+            scale(1);
+    }
+}
 
 
-        button:hover {
+.box-closed {
 
-            transform:
-                translateY(-3px)
-                scale(1.04);
+    animation:
+        softPulse 2s infinite;
+}
 
-            box-shadow:
-                0 10px 25px rgba(126, 81, 165, 0.4);
-        }
 
+@keyframes softPulse {
 
-        /* =========================================
-           PAGE 2 FLIP CARDS
-        ========================================= */
+    0% {
+        opacity: 0.65;
+    }
 
-        .flip-container {
+    50% {
+        opacity: 1;
+    }
 
-            display: grid;
+    100% {
+        opacity: 0.65;
+    }
+}
 
-            grid-template-columns:
-                repeat(3, 1fr);
 
-            gap: 15px;
+.box-content {
 
-            margin-top: 30px;
-        }
+    display: none;
 
+    line-height: 1.7;
+}
 
-        .flip-card {
 
-            height: 190px;
+.lilac-box.open .box-content {
 
-            perspective: 1000px;
+    display: block;
 
-            cursor: pointer;
-        }
+    animation:
+        textAppear 0.8s ease;
+}
 
 
-        .flip-inner {
+@keyframes textAppear {
 
-            position: relative;
+    from {
 
-            width: 100%;
+        opacity: 0;
 
-            height: 100%;
+        transform:
+            translateY(12px);
+    }
 
-            transition:
-                transform 0.7s;
+    to {
 
-            transform-style:
-                preserve-3d;
-        }
+        opacity: 1;
 
+        transform:
+            translateY(0);
+    }
+}
 
-        .flip-card.flipped .flip-inner {
 
-            transform:
-                rotateY(180deg);
-        }
+/* =========================================
+   PAGE 2
+   FLIP CARDS
+========================================= */
 
+.flip-container {
 
-        .flip-front,
-        .flip-back {
+    display: grid;
 
-            position: absolute;
+    grid-template-columns:
+        repeat(3, 1fr);
 
-            width: 100%;
+    gap: 15px;
 
-            height: 100%;
+    margin-top: 30px;
+}
 
-            border-radius: 22px;
 
-            backface-visibility: hidden;
+.flip-card {
 
-            display: flex;
+    height: 190px;
 
-            align-items: center;
+    perspective: 1000px;
 
-            justify-content: center;
+    cursor: pointer;
+}
 
-            padding: 18px;
 
-            box-shadow:
-                0 10px 28px rgba(119, 82, 151, 0.2);
-        }
+.flip-inner {
 
+    position: relative;
 
-        /* FRONT */
+    width: 100%;
 
-        .flip-front {
+    height: 100%;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #c7a4e8,
-                    #9c73c2
-                );
+    transition:
+        transform 0.7s;
 
-            color: white;
+    transform-style:
+        preserve-3d;
+}
 
-            font-size: 1.5rem;
 
-            border:
-                1px solid rgba(255,255,255,0.5);
+.flip-card.flipped
+.flip-inner {
 
-            text-shadow:
-                0 2px 8px rgba(70, 40, 90, 0.25);
+    transform:
+        rotateY(180deg);
+}
 
-            transition:
-                0.3s ease;
-        }
 
+.flip-front,
+.flip-back {
 
-        .flip-card:hover .flip-front {
+    position: absolute;
 
-            transform: scale(1.03);
+    width: 100%;
 
-            box-shadow:
-                0 0 25px rgba(165, 120, 210, 0.4);
-        }
+    height: 100%;
 
+    border-radius: 22px;
 
-        /* BACK */
+    backface-visibility: hidden;
 
-        .flip-back {
+    display: flex;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #f8f1ff,
-                    #e6d5f7
-                );
+    align-items: center;
 
-            color: #69477e;
+    justify-content: center;
 
-            transform:
-                rotateY(180deg);
+    padding: 18px;
 
-            font-size: 0.95rem;
+    box-shadow:
+        0 10px 28px
+        rgba(119,82,151,0.20);
+}
 
-            line-height: 1.5;
 
-            border:
-                1px solid rgba(255,255,255,0.8);
-        }
+.flip-front {
 
+    background:
+        linear-gradient(
+            135deg,
+            #c7a4e8,
+            #9c73c2
+        );
 
-        .hint {
+    color: white;
 
-            margin-top: 15px;
+    font-size: 1.5rem;
 
-            font-size: 0.85rem;
+    border:
+        1px solid
+        rgba(255,255,255,0.5);
 
-            color: #8b6b9b;
-        }
+    text-shadow:
+        0 2px 8px
+        rgba(70,40,90,0.25);
+}
 
 
-        /* =========================================
-           PROPOSAL
-        ========================================= */
+.flip-front:hover {
 
-        .proposal {
+    box-shadow:
+        0 0 30px
+        rgba(165,120,210,0.45);
+}
 
-            margin-top: 40px;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(250,245,255,0.92),
-                    rgba(235,220,250,0.92)
-                );
+.flip-back {
 
-            padding: 30px 20px;
+    background:
+        linear-gradient(
+            135deg,
+            #f8f1ff,
+            #e6d5f7
+        );
 
-            border-radius: 28px;
+    color: #69477e;
 
-            box-shadow:
-                0 12px 35px rgba(119, 82, 151, 0.18);
+    transform:
+        rotateY(180deg);
 
-            border:
-                1px solid rgba(255,255,255,0.8);
-        }
+    font-size: 0.95rem;
 
+    line-height: 1.5;
 
-        .proposal h2 {
+    border:
+        1px solid
+        rgba(255,255,255,0.8);
+}
 
-            color: #8b5bb3;
 
-            margin-bottom: 15px;
+.hint {
 
-            font-size: 1.7rem;
-        }
+    margin-top: 15px;
 
+    font-size: 0.9rem;
 
-        .proposal p {
+    color: #8b6b9b;
+}
 
-            font-size: 1.1rem;
 
-            margin-bottom: 15px;
-        }
+/* =========================================
+   PAGE 2 NOTE
+========================================= */
 
+#noteBox {
 
-        .yes-btn {
+    display: none;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #b879c8,
-                    #9a5db0
-                );
-        }
+    margin-top: 35px;
 
+    padding: 35px 28px;
 
-        .no-btn {
+    border-radius: 28px;
 
-            background: #aaa;
+    background:
+        linear-gradient(
+            135deg,
+            #f1e6ff,
+            #d9c0ef
+        );
 
-            margin-left: 10px;
-        }
+    border:
+        2px solid
+        rgba(255,255,255,0.85);
 
+    box-shadow:
+        0 15px 40px
+        rgba(119,82,151,0.25);
 
-        #answer {
+    color: #604276;
 
-            margin-top: 20px;
+    position: relative;
 
-            font-size: 1.2rem;
+    animation:
+        noteAppear 1s ease;
+}
 
-            color: #8b5bb3;
 
-            font-weight: bold;
-        }
+#noteBox::before {
 
+    content: "💌";
 
-        /* =========================================
-           MOBILE
-        ========================================= */
+    position: absolute;
 
-        @media (max-width: 600px) {
+    top: -22px;
 
-            h1 {
-                font-size: 1.6rem;
-            }
+    left: 50%;
 
+    transform:
+        translateX(-50%);
 
-            .container {
-                width: 90%;
-            }
+    font-size: 38px;
+}
 
 
-            .lilac-box {
-                font-size: 1rem;
+#noteBox h2 {
 
-                padding: 20px;
-            }
+    color: #8b5bb3;
 
+    margin-bottom: 18px;
 
-            .flip-container {
+    font-size: 1.5rem;
+}
 
-                grid-template-columns:
-                    1fr;
-            }
 
+#noteBox p {
 
-            .flip-card {
+    font-size: 1.05rem;
 
-                height: 150px;
-            }
+    line-height: 1.8;
+}
 
 
-            .flip-front {
+@keyframes noteAppear {
 
-                font-size: 1.2rem;
-            }
+    from {
 
+        opacity: 0;
 
-            .no-btn {
+        transform:
+            translateY(30px)
+            scale(0.92);
+    }
 
-                margin-left: 0;
-            }
+    to {
 
-        }
+        opacity: 1;
 
-    </style>
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+#page3Btn {
+
+    display: none;
+
+    margin-top: 25px;
+}
+
+
+/* =========================================
+   PAGE 3
+========================================= */
+
+.feelings {
+
+    margin-top: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(245,235,255,0.95),
+            rgba(224,201,244,0.95)
+        );
+
+    padding: 35px 28px;
+
+    border-radius: 30px;
+
+    box-shadow:
+        0 15px 40px
+        rgba(119,82,151,0.20);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.9);
+}
+
+
+.feelings h2 {
+
+    color: #8b5bb3;
+
+    margin-bottom: 20px;
+
+    font-size: 1.6rem;
+}
+
+
+.feelings p {
+
+    font-size: 1.05rem;
+
+    line-height: 1.9;
+
+    color: #604276;
+
+    margin-bottom: 15px;
+}
+
+
+/* =========================================
+   PROPOSAL BOX
+========================================= */
+
+.proposal {
+
+    margin-top: 30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eee0ff,
+            #d2b4e8
+        );
+
+    padding: 35px 20px;
+
+    border-radius: 30px;
+
+    box-shadow:
+        0 15px 40px
+        rgba(119,82,151,0.25);
+
+    border:
+        2px solid
+        rgba(255,255,255,0.8);
+
+    animation:
+        proposalAppear 1s ease;
+}
+
+
+.proposal h2 {
+
+    color: #8b5bb3;
+
+    margin-bottom: 15px;
+
+    font-size: 1.7rem;
+}
+
+
+.proposal p {
+
+    font-size: 1.1rem;
+
+    margin-bottom: 15px;
+
+    color: #604276;
+}
+
+
+.yes-btn {
+
+    background:
+        linear-gradient(
+            135deg,
+            #b879c8,
+            #9a5db0
+        );
+}
+
+
+.no-btn {
+
+    background: #999;
+
+    margin-left: 10px;
+}
+
+
+#answer {
+
+    margin-top: 20px;
+
+    font-size: 1.2rem;
+
+    color: #8b5bb3;
+
+    font-weight: bold;
+
+    line-height: 1.7;
+}
+
+
+@keyframes proposalAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            scale(0.9);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scale(1);
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    h1 {
+
+        font-size: 1.6rem;
+    }
+
+
+    .container {
+
+        width: 90%;
+    }
+
+
+    .flip-container {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .flip-card {
+
+        height: 155px;
+    }
+
+
+    .flip-front {
+
+        font-size: 1.2rem;
+    }
+
+
+    .no-btn {
+
+        margin-left: 0;
+    }
+
+}
+
+</style>
 
 </head>
 
@@ -622,624 +841,718 @@
 <body>
 
 
-    <!-- =========================================
-         FLOATING HEARTS
-    ========================================= -->
+<!-- =========================================
+     FLOATING HEARTS
+========================================= -->
 
-    <div class="heart"
-         style="left:5%; animation-duration:8s;">
-        ❤️
-    </div>
+<div class="heart"
+     style="left:5%; animation-duration:8s;">
+    ❤️
+</div>
 
-    <div class="heart"
-         style="left:20%; animation-duration:11s;">
-        💕
-    </div>
+<div class="heart"
+     style="left:20%; animation-duration:11s;">
+    💕
+</div>
 
-    <div class="heart"
-         style="left:40%; animation-duration:9s;">
-        💗
-    </div>
+<div class="heart"
+     style="left:40%; animation-duration:9s;">
+    💗
+</div>
 
-    <div class="heart"
-         style="left:65%; animation-duration:12s;">
-        ❤️
-    </div>
+<div class="heart"
+     style="left:65%; animation-duration:12s;">
+    ❤️
+</div>
 
-    <div class="heart"
-         style="left:85%; animation-duration:10s;">
-        💖
-    </div>
-
-
-    <div class="container">
+<div class="heart"
+     style="left:85%; animation-duration:10s;">
+    💖
+</div>
 
 
-        <!-- =========================================
-             PAGE 1
-        ========================================= -->
-
-        <section id="page1"
-                 class="page active">
+<div class="container">
 
 
-            <h1>
-                Hey... I have something to say 👀
-            </h1>
+<!-- =========================================
+     PAGE 1
+========================================= -->
+
+<section id="page1"
+         class="page active">
+
+    <h1>
+        Hey... I have something to say 👀
+    </h1>
 
 
-            <!-- START BUTTON -->
-
-            <button id="startBtn"
-                    onclick="startStory()">
-
-                Tap here ❤️
-
-            </button>
+    <div class="story">
 
 
-            <!-- STORY -->
+        <!-- BOX 1 -->
 
-            <div id="story">
+        <div class="lilac-box"
+             id="box1"
+             onclick="openBox(1)">
 
+            <div class="box-closed"
+                 id="closed1">
 
-                <!-- BOX 1 -->
-
-                <div class="lilac-box"
-                     id="box1">
-
-                    <span id="text1"></span>
-                    <span class="typing-cursor"
-                          id="cursor1"></span>
-
-                </div>
-
-
-                <!-- BOX 2 -->
-
-                <div class="lilac-box"
-                     id="box2">
-
-                    <span id="text2"></span>
-                    <span class="typing-cursor"
-                          id="cursor2"></span>
-
-                </div>
-
-
-                <!-- BOX 3 -->
-
-                <div class="lilac-box"
-                     id="box3">
-
-                    <span id="text3"></span>
-                    <span class="typing-cursor"
-                          id="cursor3"></span>
-
-                </div>
-
-
-                <!-- CONTINUE BUTTON -->
-
-                <button id="continueBtn"
-                        onclick="goToPage2()">
-
-                    Okay... continue ❤️
-
-                </button>
-
+                💌 Tap to open
 
             </div>
 
+            <div class="box-content">
 
-        </section>
+                Hey, I have a question for you... 🥺
 
+            </div>
 
-
-        <!-- =========================================
-             PAGE 2
-        ========================================= -->
-
-        <section id="page2"
-                 class="page">
+        </div>
 
 
-            <h1>
-                Three things before the question... 💜
-            </h1>
+        <!-- BOX 2 -->
+
+        <div class="lilac-box"
+             id="box2"
+             onclick="openBox(2)">
+
+            <div class="box-closed"
+                 id="closed2">
+
+                💕 Tap to open
+
+            </div>
+
+            <div class="box-content">
+
+                Actually... no wait 😭
+                <br>
+                Let me do this properly.
+
+            </div>
+
+        </div>
 
 
-            <div class="flip-container">
+        <!-- BOX 3 -->
+
+        <div class="lilac-box"
+             id="box3"
+             onclick="openBox(3)">
+
+            <div class="box-closed"
+                 id="closed3">
+
+                💖 Tap to open
+
+            </div>
+
+            <div class="box-content">
+
+                Because there is something
+                I've been wanting to tell you
+                for a while... ❤️
+
+            </div>
+
+        </div>
 
 
-                <!-- CARD 1 -->
+        <button id="continuePage1"
+                style="display:none;"
+                onclick="goToPage2()">
 
-                <div class="flip-card"
-                     onclick="flipCard(this)">
+            Okay... continue ❤️
 
-                    <div class="flip-inner">
-
-
-                        <div class="flip-front">
-
-                            💌
-                            <br>
-                            #1
-
-                        </div>
+        </button>
 
 
-                        <div class="flip-back">
+    </div>
 
-                            Every good quote I read lately
-                            has you in it. ❤️
-
-                        </div>
+</section>
 
 
-                    </div>
+
+<!-- =========================================
+     PAGE 2
+========================================= -->
+
+<section id="page2"
+         class="page">
+
+
+    <h1>
+        Three things before the question... 💜
+    </h1>
+
+
+    <div class="flip-container">
+
+
+        <!-- CARD 1 -->
+
+        <div class="flip-card"
+             onclick="flipCard(this, 1)">
+
+            <div class="flip-inner">
+
+
+                <div class="flip-front">
+
+                    💌
+                    <br>
+                    #1
 
                 </div>
 
 
+                <div class="flip-back">
 
-                <!-- CARD 2 -->
-
-                <div class="flip-card"
-                     onclick="flipCard(this)">
-
-                    <div class="flip-inner">
-
-
-                        <div class="flip-front">
-
-                            💕
-                            <br>
-                            #2
-
-                        </div>
-
-
-                        <div class="flip-back">
-
-                            Just thinking of you brings
-                            a smile to my face. 😊❤️
-
-                        </div>
-
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- CARD 3 -->
-
-                <div class="flip-card"
-                     onclick="flipCard(this)">
-
-                    <div class="flip-inner">
-
-
-                        <div class="flip-front">
-
-                            💖
-                            <br>
-                            #3
-
-                        </div>
-
-
-                        <div class="flip-back">
-
-                            Every time I see you,
-                            I just lose myself. 🥹
-
-                        </div>
-
-
-                    </div>
+                    Every good quote I read lately
+                    has you in it. ❤️
 
                 </div>
 
 
             </div>
 
-
-            <p class="hint">
-
-                Tap each box to flip it ✨
-
-            </p>
+        </div>
 
 
 
-            <!-- =========================================
-                 PROPOSAL
-            ========================================= -->
+        <!-- CARD 2 -->
 
-            <div class="proposal">
+        <div class="flip-card"
+             onclick="flipCard(this, 2)">
 
-
-                <h2>
-                    Okay... here's the question ❤️
-                </h2>
+            <div class="flip-inner">
 
 
-                <p>
-                    After all of that...
-                </p>
+                <div class="flip-front">
+
+                    💕
+                    <br>
+                    #2
+
+                </div>
 
 
-                <h2>
-                    Will you be mine? 🥺❤️
-                </h2>
+                <div class="flip-back">
 
+                    Just thinking of you brings
+                    a smile to my face. 😊❤️
 
-                <button class="yes-btn"
-                        onclick="sayYes()">
-
-                    Yes ❤️
-
-                </button>
-
-
-                <button class="no-btn"
-                        onclick="moveNoButton(this)">
-
-                    No 🙈
-
-                </button>
-
-
-                <div id="answer"></div>
+                </div>
 
 
             </div>
 
+        </div>
 
-        </section>
+
+
+        <!-- CARD 3 -->
+
+        <div class="flip-card"
+             onclick="flipCard(this, 3)">
+
+            <div class="flip-inner">
+
+
+                <div class="flip-front">
+
+                    💖
+                    <br>
+                    #3
+
+                </div>
+
+
+                <div class="flip-back">
+
+                    Every time I see you,
+                    I just lose myself. 🥹
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <p class="hint">
+
+        Tap each card to reveal what's inside ✨
+
+    </p>
+
+
+
+    <!-- =====================================
+         BIG NOTE
+    ====================================== -->
+
+    <div id="noteBox">
+
+        <h2>
+            A little note for you 💌
+        </h2>
+
+        <p>
+
+            I don't know if I say it enough,
+            but you really mean more to me
+            than you probably realize. ❤️
+
+            <br><br>
+
+            So before you continue...
+            just know that every little word
+            here comes straight from my heart. 💜
+
+        </p>
+
+    </div>
+
+
+    <button id="page3Btn"
+            onclick="goToPage3()">
+
+        There's more I want to tell you... 💜
+
+    </button>
+
+
+</section>
+
+
+
+<!-- =========================================
+     PAGE 3
+========================================= -->
+
+<section id="page3"
+         class="page">
+
+
+    <h1>
+        What I really feel... ❤️
+    </h1>
+
+
+    <!-- FEELINGS -->
+
+    <div class="feelings">
+
+
+        <h2>
+            A little piece of my heart 💜
+        </h2>
+
+
+        <p>
+
+            I don't really know when it happened...
+
+        </p>
+
+
+        <p>
+
+            Somewhere between the little conversations,
+            the smiles, the random moments,
+            and simply having you around...
+
+            <br>
+
+            you became someone incredibly special to me. ❤️
+
+        </p>
+
+
+        <p>
+
+            I find myself thinking about you
+            more than I probably should. 🥹
+
+        </p>
+
+
+        <p>
+
+            And honestly...
+
+            I don't want to keep these feelings
+            hidden anymore.
+
+        </p>
+
+
+        <p>
+
+            You make ordinary moments feel
+            a little more beautiful.
+
+            And that's something
+            I really treasure about you. 💕
+
+        </p>
 
 
     </div>
 
 
 
-    <!-- =========================================
-         JAVASCRIPT
-    ========================================= -->
+    <!-- =====================================
+         PROPOSAL
+    ====================================== -->
 
-    <script>
+    <div class="proposal">
 
 
-        /* =========================================
-           STORY MESSAGES
-        ========================================= */
+        <h2>
+            Okay... here's the question ❤️
+        </h2>
 
-        const messages = [
 
-            "Hey, I have a question for you... 🥺",
+        <p>
+            After everything I've told you...
+        </p>
 
-            "Actually... no wait 😭 Let me do this properly.",
 
-            "Because there is something I've been wanting to tell you for a while... ❤️"
+        <h2>
+            Will you be mine? 🥺❤️
+        </h2>
 
-        ];
 
+        <button class="yes-btn"
+                onclick="sayYes()">
 
+            Yes ❤️
 
-        /* =========================================
-           WAIT FUNCTION
-        ========================================= */
+        </button>
 
-        function wait(ms) {
 
-            return new Promise(
-                resolve => setTimeout(resolve, ms)
-            );
+        <button class="no-btn"
+                onclick="moveNoButton(this)">
 
-        }
+            No 🙈
 
+        </button>
 
 
-        /* =========================================
-           TYPING EFFECT
-        ========================================= */
+        <div id="answer"></div>
 
-        function typeMessage(element, cursor, text, speed = 55) {
 
-            return new Promise((resolve) => {
+    </div>
 
 
-                let i = 0;
+</section>
 
 
-                function type() {
+</div>
 
 
-                    if (i < text.length) {
 
+<script>
 
-                        element.innerHTML +=
-                            text.charAt(i);
 
+/* =========================================
+   PAGE 1 BOXES
+========================================= */
 
-                        i++;
+let openedBoxes = 0;
 
 
-                        setTimeout(type, speed);
+function openBox(number) {
 
 
-                    } else {
+    const box =
+        document.getElementById("box" + number);
 
 
-                        cursor.style.display = "none";
+    const closed =
+        document.getElementById("closed" + number);
 
 
-                        resolve();
+    /* Don't reopen */
 
-                    }
+    if (box.classList.contains("open")) {
 
-                }
+        return;
 
+    }
 
-                type();
 
-            });
+    /* Open */
 
-        }
+    box.classList.add("open");
 
 
+    /* Hide closed text */
 
-        /* =========================================
-           START STORY
-        ========================================= */
+    closed.style.display = "none";
 
-        async function startStory() {
 
+    /* Count */
 
-            /* Hide start button */
+    openedBoxes++;
 
-            document.getElementById("startBtn")
-                .style.display = "none";
 
+    /* All boxes opened */
 
-            /* Show story */
+    if (openedBoxes === 3) {
 
-            document.getElementById("story")
-                .style.display = "block";
+        setTimeout(() => {
 
+            document.getElementById(
+                "continuePage1"
+            ).style.display = "inline-block";
 
-            await wait(300);
+        }, 500);
 
+    }
 
+}
 
-            /* =====================================
-               BOX 1
-            ===================================== */
 
-            const box1 =
-                document.getElementById("box1");
 
+/* =========================================
+   PAGE 2
+========================================= */
 
-            box1.classList.add("show");
+function goToPage2() {
 
 
-            await typeMessage(
+    document.getElementById("page1")
+        .classList.remove("active");
 
-                document.getElementById("text1"),
 
-                document.getElementById("cursor1"),
+    document.getElementById("page2")
+        .classList.add("active");
 
-                messages[0]
 
-            );
+    window.scrollTo({
 
+        top: 0,
 
-            await wait(1000);
+        behavior: "smooth"
 
+    });
 
+}
 
-            /* =====================================
-               BOX 2
-            ===================================== */
 
-            const box2 =
-                document.getElementById("box2");
 
+/* =========================================
+   FLIP CARDS
+========================================= */
 
-            box2.classList.add("show");
+let flippedCards = 0;
 
+let cardStatus = {
 
-            await typeMessage(
+    1: false,
 
-                document.getElementById("text2"),
+    2: false,
 
-                document.getElementById("cursor2"),
+    3: false
 
-                messages[1]
+};
 
-            );
 
+function flipCard(card, number) {
 
-            await wait(1000);
 
+    /* Flip card */
 
+    card.classList.toggle("flipped");
 
-            /* =====================================
-               BOX 3
-            ===================================== */
 
-            const box3 =
-                document.getElementById("box3");
+    /* Count only first opening */
 
+    if (
+        card.classList.contains("flipped")
+        &&
+        cardStatus[number] === false
+    ) {
 
-            box3.classList.add("show");
+        cardStatus[number] = true;
 
+        flippedCards++;
 
-            await typeMessage(
+    }
 
-                document.getElementById("text3"),
 
-                document.getElementById("cursor3"),
+    /* =====================================
+       ALL THREE OPEN
+    ===================================== */
 
-                messages[2]
+    if (flippedCards === 3) {
 
-            );
 
+        setTimeout(() => {
 
-            await wait(800);
 
+            document.getElementById(
+                "noteBox"
+            ).style.display = "block";
 
 
-            /* Show continue button */
+            document.getElementById(
+                "page3Btn"
+            ).style.display = "inline-block";
 
-            document.getElementById("continueBtn")
-                .style.display = "inline-block";
 
-        }
+        }, 700);
 
+    }
 
+}
 
-        /* =========================================
-           GO TO PAGE 2
-        ========================================= */
 
-        function goToPage2() {
 
+/* =========================================
+   PAGE 3
+========================================= */
 
-            document.getElementById("page1")
-                .classList.remove("active");
+function goToPage3() {
 
 
-            document.getElementById("page2")
-                .classList.add("active");
+    document.getElementById("page2")
+        .classList.remove("active");
 
 
-            window.scrollTo({
+    document.getElementById("page3")
+        .classList.add("active");
 
-                top: 0,
 
-                behavior: "smooth"
+    window.scrollTo({
 
-            });
+        top: 0,
 
-        }
+        behavior: "smooth"
 
+    });
 
+}
 
-        /* =========================================
-           FLIP CARDS
-        ========================================= */
 
-        function flipCard(card) {
 
-            card.classList.toggle("flipped");
+/* =========================================
+   YES
+========================================= */
 
-        }
+function sayYes() {
 
 
+    document.getElementById("answer")
+        .innerHTML =
 
-        /* =========================================
-           YES BUTTON
-        ========================================= */
+        "YOU SAID YES! 😭❤️<br>" +
 
-        function sayYes() {
+        "You've officially made my day! 💕✨";
 
 
-            document.getElementById("answer")
-                .innerHTML =
-                "YOU SAID YES! 😭❤️<br>" +
-                "You've officially made my day! 💕✨";
+    createHearts();
 
+}
 
-            createHearts();
 
-        }
 
+/* =========================================
+   NO
+========================================= */
 
+function moveNoButton(button) {
 
-        /* =========================================
-           PLAYFUL NO BUTTON
-        ========================================= */
 
-        function moveNoButton(button) {
+    button.innerHTML =
+        "Are you sure? 🥺";
 
 
-            button.innerHTML =
-                "Are you sure? 🥺";
+    const x =
+        Math.random() * 100 - 50;
 
 
-            const x =
-                Math.random() * 100 - 50;
+    const y =
+        Math.random() * 60 - 30;
 
 
-            const y =
-                Math.random() * 60 - 30;
+    button.style.transform =
+        `translate(${x}px, ${y}px)`;
 
+}
 
-            button.style.transform =
-                `translate(${x}px, ${y}px)`;
 
-        }
 
+/* =========================================
+   HEART EXPLOSION
+========================================= */
 
+function createHearts() {
 
-        /* =========================================
-           CREATE HEARTS
-        ========================================= */
 
-        function createHearts() {
+    for (
+        let i = 0;
+        i < 30;
+        i++
+    ) {
 
 
-            for (let i = 0; i < 30; i++) {
+        const heart =
+            document.createElement("div");
 
 
-                const heart =
-                    document.createElement("div");
+        heart.innerHTML =
 
+            [
+                "❤️",
+                "💕",
+                "💖",
+                "💗",
+                "💘"
+            ][
+                Math.floor(
+                    Math.random() * 5
+                )
+            ];
 
-                heart.innerHTML =
 
-                    [
-                        "❤️",
-                        "💕",
-                        "💖",
-                        "💗",
-                        "💘"
-                    ][
-                        Math.floor(
-                            Math.random() * 5
-                        )
-                    ];
+        heart.classList.add("heart");
 
 
-                heart.classList.add("heart");
+        heart.style.left =
+            Math.random() * 100 + "%";
 
 
-                heart.style.left =
-                    Math.random() * 100 + "%";
+        heart.style.animationDuration =
+            (
+                Math.random() * 3 + 3
+            ) + "s";
 
 
-                heart.style.animationDuration =
-                    (Math.random() * 3 + 3) + "s";
+        document.body.appendChild(
+            heart
+        );
 
 
-                document.body.appendChild(heart);
+        setTimeout(() => {
 
+            heart.remove();
 
-                setTimeout(() => {
+        }, 6000);
 
-                    heart.remove();
+    }
 
-                }, 6000);
+}
 
-            }
-
-        }
-
-    </script>
+</script>
 
 
 </body>
