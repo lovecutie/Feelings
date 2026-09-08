@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>A Little Question For You ❤️</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+            font-family: "Poppins", Arial, sans-serif;
+
+            min-height: 100vh;
+
+            background:
+                radial-gradient(circle at top left, #eee1ff, transparent 35%),
+                radial-gradient(circle at bottom right, #e7d4ff, transparent 35%),
+                linear-gradient(135deg, #f9f1ff, #eee3ff, #fceeff);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            overflow-x: hidden;
+
+            color: #4a305f;
+        }
+
+
+        /* =========================================
+           FLOATING HEARTS
+        ========================================= */
+
+        .heart {
+            position: fixed;
+
+            bottom: -30px;
+
+            font-size: 22px;
+
+            animation: floatUp linear infinite;
+
+            opacity: 0.7;
+
+            pointer-events: none;
+
+            z-index: 0;
+        }
+
+
+        @keyframes floatUp {
+
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+
+        }
+
+
+        /* =========================================
+           MAIN CONTAINER
+        ========================================= */
+
+        .container {
+            width: 92%;
+
+            max-width: 700px;
+
+            text-align: center;
+
+            position: relative;
+
+            z-index: 2;
+
+            padding: 30px 0;
+        }
+
+
+        /* =========================================
+           PAGES
+        ========================================= */
+
+        .page {
+            display: none;
+
+            animation: fadeIn 0.8s ease;
+        }
+
+
+        .page.active {
+            display: block;
+        }
+
+
+        @keyframes fadeIn {
+
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+
+        /* =========================================
+           HEADINGS
+        ========================================= */
+
+        h1 {
+            font-size: 2rem;
+
+            margin-bottom: 30px;
+
+            color: #8b5bb3;
+
+            text-shadow:
+                0 3px 15px rgba(139, 91, 179, 0.15);
+        }
+
+
+        /* =========================================
+           START BUTTON
+        ========================================= */
+
+        #startBtn {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #a978d1,
+                    #8e61b5
+                );
+
+            box-shadow:
+                0 8px 25px rgba(126, 81, 165, 0.3);
+
+            animation: buttonPulse 2s infinite;
+        }
+
+
+        @keyframes buttonPulse {
+
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+
+        }
+
+
+        /* =========================================
+           STORY AREA
+        ========================================= */
+
+        #story {
+            display: none;
+
+            margin-top: 25px;
+        }
+
+
+        /* =========================================
+           BEAUTIFUL LILAC BOXES
+        ========================================= */
+
+        .lilac-box {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(238, 225, 255, 0.96),
+                    rgba(210, 188, 240, 0.96)
+                );
+
+            border: 1px solid rgba(255, 255, 255, 0.9);
+
+            border-radius: 24px;
+
+            padding: 24px 25px;
+
+            margin: 20px 0;
+
+            color: #604276;
+
+            font-size: 1.08rem;
+
+            line-height: 1.7;
+
+            box-shadow:
+                0 12px 30px rgba(119, 82, 151, 0.18),
+                inset 0 1px 3px rgba(255, 255, 255, 0.9);
+
+            opacity: 0;
+
+            transform:
+                translateY(30px)
+                scale(0.92);
+
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s ease;
+        }
+
+
+        .lilac-box.show {
+
+            opacity: 1;
+
+            transform:
+                translateY(0)
+                scale(1);
+
+            animation:
+                lilacGlow 2s ease-in-out;
+        }
+
+
+        @keyframes lilacGlow {
+
+            0% {
+                box-shadow:
+                    0 0 0 rgba(170, 130, 220, 0);
+            }
+
+            50% {
+                box-shadow:
+                    0 0 30px rgba(170, 130, 220, 0.45);
+            }
+
+            100% {
+                box-shadow:
+                    0 12px 30px rgba(119, 82, 151, 0.18);
+            }
+
+        }
+
+
+        /* =========================================
+           TYPING CURSOR
+        ========================================= */
+
+        .typing-cursor {
+
+            display: inline-block;
+
+            width: 2px;
+
+            height: 20px;
+
+            background: #8e61b5;
+
+            animation: blink 0.7s infinite;
+
+            vertical-align: middle;
+
+            margin-left: 3px;
+        }
+
+
+        @keyframes blink {
+
+            50% {
+                opacity: 0;
+            }
+
+        }
+
+
+        /* =========================================
+           BUTTONS
+        ========================================= */
+
+        button {
+
+            border: none;
+
+            padding: 14px 28px;
+
+            border-radius: 30px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #a978d1,
+                    #8e61b5
+                );
+
+            color: white;
+
+            font-size: 1rem;
+
+            cursor: pointer;
+
+            margin-top: 25px;
+
+            box-shadow:
+                0 7px 20px rgba(126, 81, 165, 0.3);
+
+            transition:
+                0.3s ease;
+        }
+
+
+        button:hover {
+
+            transform:
+                translateY(-3px)
+                scale(1.04);
+
+            box-shadow:
+                0 10px 25px rgba(126, 81, 165, 0.4);
+        }
+
+
+        /* =========================================
+           PAGE 2 FLIP CARDS
+        ========================================= */
+
+        .flip-container {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 15px;
+
+            margin-top: 30px;
+        }
+
+
+        .flip-card {
+
+            height: 190px;
+
+            perspective: 1000px;
+
+            cursor: pointer;
+        }
+
+
+        .flip-inner {
+
+            position: relative;
+
+            width: 100%;
+
+            height: 100%;
+
+            transition:
+                transform 0.7s;
+
+            transform-style:
+                preserve-3d;
+        }
+
+
+        .flip-card.flipped .flip-inner {
+
+            transform:
+                rotateY(180deg);
+        }
+
+
+        .flip-front,
+        .flip-back {
+
+            position: absolute;
+
+            width: 100%;
+
+            height: 100%;
+
+            border-radius: 22px;
+
+            backface-visibility: hidden;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 18px;
+
+            box-shadow:
+                0 10px 28px rgba(119, 82, 151, 0.2);
+        }
+
+
+        /* FRONT */
+
+        .flip-front {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #c7a4e8,
+                    #9c73c2
+                );
+
+            color: white;
+
+            font-size: 1.5rem;
+
+            border:
+                1px solid rgba(255,255,255,0.5);
+
+            text-shadow:
+                0 2px 8px rgba(70, 40, 90, 0.25);
+
+            transition:
+                0.3s ease;
+        }
+
+
+        .flip-card:hover .flip-front {
+
+            transform: scale(1.03);
+
+            box-shadow:
+                0 0 25px rgba(165, 120, 210, 0.4);
+        }
+
+
+        /* BACK */
+
+        .flip-back {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f8f1ff,
+                    #e6d5f7
+                );
+
+            color: #69477e;
+
+            transform:
+                rotateY(180deg);
+
+            font-size: 0.95rem;
+
+            line-height: 1.5;
+
+            border:
+                1px solid rgba(255,255,255,0.8);
+        }
+
+
+        .hint {
+
+            margin-top: 15px;
+
+            font-size: 0.85rem;
+
+            color: #8b6b9b;
+        }
+
+
+        /* =========================================
+           PROPOSAL
+        ========================================= */
+
+        .proposal {
+
+            margin-top: 40px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(250,245,255,0.92),
+                    rgba(235,220,250,0.92)
+                );
+
+            padding: 30px 20px;
+
+            border-radius: 28px;
+
+            box-shadow:
+                0 12px 35px rgba(119, 82, 151, 0.18);
+
+            border:
+                1px solid rgba(255,255,255,0.8);
+        }
+
+
+        .proposal h2 {
+
+            color: #8b5bb3;
+
+            margin-bottom: 15px;
+
+            font-size: 1.7rem;
+        }
+
+
+        .proposal p {
+
+            font-size: 1.1rem;
+
+            margin-bottom: 15px;
+        }
+
+
+        .yes-btn {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #b879c8,
+                    #9a5db0
+                );
+        }
+
+
+        .no-btn {
+
+            background: #aaa;
+
+            margin-left: 10px;
+        }
+
+
+        #answer {
+
+            margin-top: 20px;
+
+            font-size: 1.2rem;
+
+            color: #8b5bb3;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 600px) {
+
+            h1 {
+                font-size: 1.6rem;
+            }
+
+
+            .container {
+                width: 90%;
+            }
+
+
+            .lilac-box {
+                font-size: 1rem;
+
+                padding: 20px;
+            }
+
+
+            .flip-container {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .flip-card {
+
+                height: 150px;
+            }
+
+
+            .flip-front {
+
+                font-size: 1.2rem;
+            }
+
+
+            .no-btn {
+
+                margin-left: 0;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         FLOATING HEARTS
+    ========================================= -->
+
+    <div class="heart"
+         style="left:5%; animation-duration:8s;">
+        ❤️
+    </div>
+
+    <div class="heart"
+         style="left:20%; animation-duration:11s;">
+        💕
+    </div>
+
+    <div class="heart"
+         style="left:40%; animation-duration:9s;">
+        💗
+    </div>
+
+    <div class="heart"
+         style="left:65%; animation-duration:12s;">
+        ❤️
+    </div>
+
+    <div class="heart"
+         style="left:85%; animation-duration:10s;">
+        💖
+    </div>
+
+
+    <div class="container">
+
+
+        <!-- =========================================
+             PAGE 1
+        ========================================= -->
+
+        <section id="page1"
+                 class="page active">
+
+
+            <h1>
+                Hey... I have something to say 👀
+            </h1>
+
+
+            <!-- START BUTTON -->
+
+            <button id="startBtn"
+                    onclick="startStory()">
+
+                Tap here ❤️
+
+            </button>
+
+
+            <!-- STORY -->
+
+            <div id="story">
+
+
+                <!-- BOX 1 -->
+
+                <div class="lilac-box"
+                     id="box1">
+
+                    <span id="text1"></span>
+                    <span class="typing-cursor"
+                          id="cursor1"></span>
+
+                </div>
+
+
+                <!-- BOX 2 -->
+
+                <div class="lilac-box"
+                     id="box2">
+
+                    <span id="text2"></span>
+                    <span class="typing-cursor"
+                          id="cursor2"></span>
+
+                </div>
+
+
+                <!-- BOX 3 -->
+
+                <div class="lilac-box"
+                     id="box3">
+
+                    <span id="text3"></span>
+                    <span class="typing-cursor"
+                          id="cursor3"></span>
+
+                </div>
+
+
+                <!-- CONTINUE BUTTON -->
+
+                <button id="continueBtn"
+                        onclick="goToPage2()">
+
+                    Okay... continue ❤️
+
+                </button>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =========================================
+             PAGE 2
+        ========================================= -->
+
+        <section id="page2"
+                 class="page">
+
+
+            <h1>
+                Three things before the question... 💜
+            </h1>
+
+
+            <div class="flip-container">
+
+
+                <!-- CARD 1 -->
+
+                <div class="flip-card"
+                     onclick="flipCard(this)">
+
+                    <div class="flip-inner">
+
+
+                        <div class="flip-front">
+
+                            💌
+                            <br>
+                            #1
+
+                        </div>
+
+
+                        <div class="flip-back">
+
+                            Every good quote I read lately
+                            has you in it. ❤️
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- CARD 2 -->
+
+                <div class="flip-card"
+                     onclick="flipCard(this)">
+
+                    <div class="flip-inner">
+
+
+                        <div class="flip-front">
+
+                            💕
+                            <br>
+                            #2
+
+                        </div>
+
+
+                        <div class="flip-back">
+
+                            Just thinking of you brings
+                            a smile to my face. 😊❤️
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- CARD 3 -->
+
+                <div class="flip-card"
+                     onclick="flipCard(this)">
+
+                    <div class="flip-inner">
+
+
+                        <div class="flip-front">
+
+                            💖
+                            <br>
+                            #3
+
+                        </div>
+
+
+                        <div class="flip-back">
+
+                            Every time I see you,
+                            I just lose myself. 🥹
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <p class="hint">
+
+                Tap each box to flip it ✨
+
+            </p>
+
+
+
+            <!-- =========================================
+                 PROPOSAL
+            ========================================= -->
+
+            <div class="proposal">
+
+
+                <h2>
+                    Okay... here's the question ❤️
+                </h2>
+
+
+                <p>
+                    After all of that...
+                </p>
+
+
+                <h2>
+                    Will you be mine? 🥺❤️
+                </h2>
+
+
+                <button class="yes-btn"
+                        onclick="sayYes()">
+
+                    Yes ❤️
+
+                </button>
+
+
+                <button class="no-btn"
+                        onclick="moveNoButton(this)">
+
+                    No 🙈
+
+                </button>
+
+
+                <div id="answer"></div>
+
+
+            </div>
+
+
+        </section>
+
+
+    </div>
+
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================= -->
+
+    <script>
+
+
+        /* =========================================
+           STORY MESSAGES
+        ========================================= */
+
+        const messages = [
+
+            "Hey, I have a question for you... 🥺",
+
+            "Actually... no wait 😭 Let me do this properly.",
+
+            "Because there is something I've been wanting to tell you for a while... ❤️"
+
+        ];
+
+
+
+        /* =========================================
+           WAIT FUNCTION
+        ========================================= */
+
+        function wait(ms) {
+
+            return new Promise(
+                resolve => setTimeout(resolve, ms)
+            );
+
+        }
+
+
+
+        /* =========================================
+           TYPING EFFECT
+        ========================================= */
+
+        function typeMessage(element, cursor, text, speed = 55) {
+
+            return new Promise((resolve) => {
+
+
+                let i = 0;
+
+
+                function type() {
+
+
+                    if (i < text.length) {
+
+
+                        element.innerHTML +=
+                            text.charAt(i);
+
+
+                        i++;
+
+
+                        setTimeout(type, speed);
+
+
+                    } else {
+
+
+                        cursor.style.display = "none";
+
+
+                        resolve();
+
+                    }
+
+                }
+
+
+                type();
+
+            });
+
+        }
+
+
+
+        /* =========================================
+           START STORY
+        ========================================= */
+
+        async function startStory() {
+
+
+            /* Hide start button */
+
+            document.getElementById("startBtn")
+                .style.display = "none";
+
+
+            /* Show story */
+
+            document.getElementById("story")
+                .style.display = "block";
+
+
+            await wait(300);
+
+
+
+            /* =====================================
+               BOX 1
+            ===================================== */
+
+            const box1 =
+                document.getElementById("box1");
+
+
+            box1.classList.add("show");
+
+
+            await typeMessage(
+
+                document.getElementById("text1"),
+
+                document.getElementById("cursor1"),
+
+                messages[0]
+
+            );
+
+
+            await wait(1000);
+
+
+
+            /* =====================================
+               BOX 2
+            ===================================== */
+
+            const box2 =
+                document.getElementById("box2");
+
+
+            box2.classList.add("show");
+
+
+            await typeMessage(
+
+                document.getElementById("text2"),
+
+                document.getElementById("cursor2"),
+
+                messages[1]
+
+            );
+
+
+            await wait(1000);
+
+
+
+            /* =====================================
+               BOX 3
+            ===================================== */
+
+            const box3 =
+                document.getElementById("box3");
+
+
+            box3.classList.add("show");
+
+
+            await typeMessage(
+
+                document.getElementById("text3"),
+
+                document.getElementById("cursor3"),
+
+                messages[2]
+
+            );
+
+
+            await wait(800);
+
+
+
+            /* Show continue button */
+
+            document.getElementById("continueBtn")
+                .style.display = "inline-block";
+
+        }
+
+
+
+        /* =========================================
+           GO TO PAGE 2
+        ========================================= */
+
+        function goToPage2() {
+
+
+            document.getElementById("page1")
+                .classList.remove("active");
+
+
+            document.getElementById("page2")
+                .classList.add("active");
+
+
+            window.scrollTo({
+
+                top: 0,
+
+                behavior: "smooth"
+
+            });
+
+        }
+
+
+
+        /* =========================================
+           FLIP CARDS
+        ========================================= */
+
+        function flipCard(card) {
+
+            card.classList.toggle("flipped");
+
+        }
+
+
+
+        /* =========================================
+           YES BUTTON
+        ========================================= */
+
+        function sayYes() {
+
+
+            document.getElementById("answer")
+                .innerHTML =
+                "YOU SAID YES! 😭❤️<br>" +
+                "You've officially made my day! 💕✨";
+
+
+            createHearts();
+
+        }
+
+
+
+        /* =========================================
+           PLAYFUL NO BUTTON
+        ========================================= */
+
+        function moveNoButton(button) {
+
+
+            button.innerHTML =
+                "Are you sure? 🥺";
+
+
+            const x =
+                Math.random() * 100 - 50;
+
+
+            const y =
+                Math.random() * 60 - 30;
+
+
+            button.style.transform =
+                `translate(${x}px, ${y}px)`;
+
+        }
+
+
+
+        /* =========================================
+           CREATE HEARTS
+        ========================================= */
+
+        function createHearts() {
+
+
+            for (let i = 0; i < 30; i++) {
+
+
+                const heart =
+                    document.createElement("div");
+
+
+                heart.innerHTML =
+
+                    [
+                        "❤️",
+                        "💕",
+                        "💖",
+                        "💗",
+                        "💘"
+                    ][
+                        Math.floor(
+                            Math.random() * 5
+                        )
+                    ];
+
+
+                heart.classList.add("heart");
+
+
+                heart.style.left =
+                    Math.random() * 100 + "%";
+
+
+                heart.style.animationDuration =
+                    (Math.random() * 3 + 3) + "s";
+
+
+                document.body.appendChild(heart);
+
+
+                setTimeout(() => {
+
+                    heart.remove();
+
+                }, 6000);
+
+            }
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
